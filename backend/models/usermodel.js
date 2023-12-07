@@ -17,8 +17,16 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  roles: {
+    type: String,
+    default:"user"
+  },
+  
   bookedTickets: [{ type: mongoose.Schema.ObjectId, ref: "Ticket" }],
-});
+
+}
+  ,
+);
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();

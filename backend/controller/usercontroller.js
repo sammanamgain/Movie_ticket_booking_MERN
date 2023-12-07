@@ -7,7 +7,7 @@ const sendToken = require("../utils/sendToken.js");
 
 //sign up a user
 exports.sign_up = catchAsync(async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password,roles } = req.body;
   if (validator.isEmail(email) === false) {
     return next(new Error(400, "Invalid Email"));
   }
@@ -21,7 +21,7 @@ exports.sign_up = catchAsync(async (req, res, next) => {
       )
     );
   }
-  const user = await User.create({ username, email, password });
+  const user = await User.create({ username, email, password,roles });
   if (!user) {
     return next(new Error(400, "failed to create user"));
   }

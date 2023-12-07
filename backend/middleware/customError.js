@@ -4,7 +4,7 @@ const sendError = (error, req, res, next) => {
   error.message = error.message || "Server Error";
   
   res
-    .status(error.statusCode)
+    .status(Number(error.statusCode))
     .json({ success: false, message: error.message });
 };
 module.exports = sendError;
