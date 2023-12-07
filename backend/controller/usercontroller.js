@@ -35,18 +35,18 @@ exports.log_in = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   console.log(password);
   if (!email || !password) {
-    return next(new Errorcreator(400, "please Enter your email and password"));
+    return next(new Error(400, "please Enter your email and password"));
   }
   // as we have made false to select property of password ,we have to explicitly select password field too
   let user = await User.findOne({ email }).select("+password");
   if (!user) {
-    return next(new Errorcreator(401, "Invalid email or password"));
+    return next(new Error(401, "Invalid email or password"));
   }
 
   const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(new Errorcreator(401, "Invalid  Password"));
+    return next(new Error(401, "Invalid  Password"));
   }
   user = await User.findOne({ email });
   sendToken(user, 200, res, next);

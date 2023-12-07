@@ -7,7 +7,7 @@ const sendToken = require("../utils/sendToken.js");
 const jwt = require("jsonwebtoken");
 
 exports.auth = catchAsync(async (req, res, next) => {
-  console.log(req.cookies);
+  //console.log(req.cookies);
   const { token } = req.cookies;
   if (!token) {
     res.status(400).json({
@@ -31,7 +31,7 @@ exports.auth = catchAsync(async (req, res, next) => {
 });
 exports.checkrole = (...roles) => {
     return (req, res, next) => {
-      console.log(req.user)
+     // console.log(req.user)
     if (req.user.roles == undefined) {
       next(new Error("404", "you are not allowed to access this route"));
     } else if (req.user.roles == "user") {
