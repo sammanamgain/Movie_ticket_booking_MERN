@@ -1,38 +1,47 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-
+import { useEffect, useState } from 'react';
+import Cardbox from '../Components/Card.jsx';
 export default function Home() {
-
+  const [movie, setmovie] = useState([]);
+  const [called, usecalled] = useState(true);
+  useEffect(() => {
+    
+    (async () => {
+      const response = await fetch("http://localhost:5000/api/v1/movie/getall", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (data.success === true)
+      {
+        usecalled(false);
+        }
+      //console.log(data.movielist);
+      setmovie([...movie,...(data.movielist)]);
+     })();
+  
+},[])
+  
+  console.log(movie[0])
+  console.log(typeof(movie))
 
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
-    </Card>
+    <div className='w-full  md:w-[2500px] md:flex-1  md:w-[100%]'>
+      {called ? (
+        <div>Loading....please wait</div>
+      ) : (
+        <div className='flex flex-wrap m-10 md:flex md:flex-wrap md:justify-between  '>
+          {movie.map((ele) => (
+            <Cardbox
+              data={ele}
+              key={ele.url}
+              className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0'
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

@@ -18,10 +18,14 @@ const MovieSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  url:{
-    type:String,
-    required:true,
-  }
+  url: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    default: "Description is not available for this Movie",
+  },
 });
 const Movie = mongoose.model("Movie", MovieSchema);
 module.exports = Movie;
