@@ -8,7 +8,12 @@ const movierouter = require("./router/movieroutes.js");
 const customError = require("./middleware/customError.js");
 app.use(express.json());
 app.use(cookie_parser());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use("/api/v1", userrouter);
 app.use("/api/v1", movierouter);
 app.use(customError);
