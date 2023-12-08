@@ -15,7 +15,7 @@ exports.getAllMovies = catchAsync(async (req, res, next) => {
 
 //create a movie listing 
 exports.createmovie = catchAsync(async (req, res, next) => {
-    const { title, genre, showtimes, availableSeats } = req.body;
+    const { title, genre, showtimes, availableSeats,url } = req.body;
 
     
     const movie = await Movie.create({
@@ -23,6 +23,7 @@ exports.createmovie = catchAsync(async (req, res, next) => {
       genre,
       showtimes,
       availableSeats,
+      url
     });
     if (!movie)
     {
