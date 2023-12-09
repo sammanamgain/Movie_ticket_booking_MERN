@@ -4,7 +4,7 @@ const {auth,checkrole}=require("../middleware/auth")
 const router = express.Router();
 
 
-router.route("/movie/getall").get(getAllMovies);
+router.route("/movie/getall").get(auth,getAllMovies);
 router.route("/movie/createmovie").post(auth,checkrole("admin"),createmovie);
 
 module.exports = router;
