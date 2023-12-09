@@ -28,16 +28,16 @@ export default function Home() {
 
 
   return (
-    <div className='w-full  md:w-[2500px] md:flex-1  md:w-[100%]'>
+    <div className='w-full   md:flex-1 '>
       {called ? (
         <div>Loading....please wait</div>
       ) : (
-        <div className='flex flex-wrap m-10 md:flex md:flex-wrap md:justify-between  '>
+        <div className='flex  flex-wrap   justify-between  gap-14 m-10 '>
           {movie.map((ele) => (
             <Cardbox
               data={ele}
               key={ele.url}
-              className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0'
+              
             />
           ))}
         </div>
