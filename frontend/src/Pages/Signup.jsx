@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signInsuccess } from "../redux/user/userSlice";
 export default function Login() {
   const navigate = useNavigate();
-
-  const [form, setform] = useState({name:"", email: "", password: "" });
+  const dispatch = useDispatch();
+  const [form, setform] = useState({ name: "", email: "", password: "" });
   const handlesubmit = async (e) => {
     e.preventDefault();
     console.log("submission called");
-    const formdata = { username:form.name,email: form.email, password: form.password };
+    const formdata = {
+      username: form.name,
+      email: form.email,
+      password: form.password,
+    };
     //console.log(formdata);
     const response = await fetch("http://localhost:5000/api/v1/user/sign_up", {
       method: "POST",
@@ -17,6 +23,7 @@ export default function Login() {
     });
     const data = await response.json();
     if (data.success === true) {
+      dispatch(signInsuccess(data.user._id));
       navigate("/home");
     }
   };
@@ -38,7 +45,7 @@ export default function Login() {
               className='block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40'
               onChange={handlechange}
               value={form.name}
-          id='name'
+              id='name'
               type='text'
               autoComplete='username'
             />
