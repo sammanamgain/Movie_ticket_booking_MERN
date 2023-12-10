@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signInsuccess } from "../redux/user/userSlice";
+import { signInsuccess,setUser,setEmail } from "../redux/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
@@ -21,6 +21,8 @@ export default function Login() {
     const data = await response.json();
     if (data.success === true) {
       dispatch(signInsuccess(data.user._id))
+      dispatch(setUser(data.user.username))
+      dispatch(setEmail(data.user.email))
       navigate("/home");
     }
   };
