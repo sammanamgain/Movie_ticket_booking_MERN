@@ -93,6 +93,7 @@ To run this project, you will need to add the following environment variables to
 ## Installation
 
 To run this project,clone the project
+then in the frontend , change this URL :https://movie-react-eq03.onrender.com to http://localhost:5000
 
 ```bash
   cd MOVIE
