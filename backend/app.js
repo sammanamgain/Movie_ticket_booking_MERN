@@ -1,8 +1,17 @@
 const express = require("express");
 const cookie_parser = require("cookie-parser");
 const cors = require("cors");
+const corsOptions = {
+  origin: "https://movie-react-eq03.onrender.com",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+
 
 const app = express();
+app.use(cors(corsOptions));
 const userrouter = require("./router/userRoutes.js");
 const movierouter = require("./router/movieroutes.js");
 const customError = require("./middleware/customError.js");
