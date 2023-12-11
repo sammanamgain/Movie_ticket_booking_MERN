@@ -1,6 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faClapperboard,
+  faUser,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   signInsuccess,
   setUser,
@@ -26,27 +33,34 @@ export default function Navbar() {
   return (
     <header className='bg-slate-300 shadow-md text-xl'>
       <div className='flex justify-between items-center max-w-6xl p-3 mx-auto '>
-        <Link to='/'>
+        <Link className='flex ' to='/'>
+          <FontAwesomeIcon className='pt-1' icon={faHouse} />
           <div className='ml-8'>Home</div>
         </Link>
 
         <div className='flex gap-8 '>
-          <Link to='/movies'>
+          <Link className='flex' to='/movies'>
+            <FontAwesomeIcon className='pt-1' icon={faClapperboard} />
             <div className='px-3'>Movies</div>
           </Link>
           {currentUser ? (
-            <Link to='/profile'>
+            <Link className='flex' to='/profile'>
+              <FontAwesomeIcon icon={faUser} className='pt-1' />
               <div className='px-3'>Profile</div>
             </Link>
           ) : (
-            <Link to='/sign-in'>
+            <Link className='flex' to='/sign-in'>
+              <FontAwesomeIcon icon={faRightFromBracket} className='pt-1' />
               <div className='px-3'>Login</div>
             </Link>
           )}
           {currentUser && (
-            <button onClick={handleclick} className='px-3'>
-              Log Out
-            </button>
+            <div className="flex">
+              <FontAwesomeIcon icon={faRightFromBracket} className='pt-1' />
+              <button onClick={handleclick} className='px-3'>
+                Log Out
+              </button>
+            </div>
           )}
         </div>
       </div>
