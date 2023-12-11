@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 
 
 
-//app.use(cors());
+app.use(cors());
 const userrouter = require("./router/userRoutes.js");
 const movierouter = require("./router/movieroutes.js");
 const customError = require("./middleware/customError.js");
