@@ -118,7 +118,8 @@ Setup your mongodb account at atlas and replace connection string with your stri
 ## 🛠 Skills
 Javascript, HTML, CSS,React,React-Router-Dom,React-Redux-toolkit,Node.js,Express.js,MongoDb,tailwindCSS
 
-
+## Demo
+https://movie-react-eq03.onrender.com/
 ## Screenshots
 
 ![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/e27394d4-ddfc-48ba-a1b5-ed9ef4b75bf3)
