@@ -5,11 +5,11 @@ import About from "../Components/About.jsx";
 export default function Home() {
   const [movie, setmovie] = useState([]);
   const [called, usecalled] = useState(true);
- 
+
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:5000/api/v1/movie/getall",
+        "https://amgain-movie-threature.onrender.com/api/v1/movie/getall",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -21,8 +21,8 @@ export default function Home() {
         setmovie((prevMovie) => {
           const updatedMovie = [...prevMovie, ...data.movielist];
           console.log(updatedMovie);
-            usecalled(false);
-         
+          usecalled(false);
+
           return updatedMovie;
         });
       }
@@ -32,7 +32,6 @@ export default function Home() {
 
   return (
     <>
-      
       <div className='text-5xl text-center mt-2 italic'>All Movies</div>
       <div className='w-full   md:flex-1 '>
         {called ? (

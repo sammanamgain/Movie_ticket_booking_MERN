@@ -18,9 +18,12 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleclick = async () => {
-    const data = await fetch("http://localhost:5000/api/v1/user/logout", {
-      method: "GET",
-    });
+    const data = await fetch(
+      "https://amgain-movie-threature.onrender.com/api/v1/user/logout",
+      {
+        method: "GET",
+      }
+    );
     const resolved = await data.json();
     console.log(resolved);
     if (resolved.success === true) {
@@ -55,7 +58,7 @@ export default function Navbar() {
             </Link>
           )}
           {currentUser && (
-            <div className="flex">
+            <div className='flex'>
               <FontAwesomeIcon icon={faRightFromBracket} className='pt-1' />
               <button onClick={handleclick} className='px-3'>
                 Log Out

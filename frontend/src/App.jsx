@@ -9,6 +9,8 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+//use http:localhost:5000 if you are using on localhost 
+
 
 import "./App.css";
 import PrivateRoute from "./Components/PrivateRoute";

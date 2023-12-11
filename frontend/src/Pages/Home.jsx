@@ -9,7 +9,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:5000/api/v1/movie/getall",
+        "https://amgain-movie-threature.onrender.com/api/v1/movie/getall",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -24,7 +24,7 @@ export default function Home() {
           let featured = updatedMovie.slice(0, 4);
           setfeaturedmovie(() => {
             const updatedstate = [...featured];
-            usecalled(false)
+            usecalled(false);
             return updatedstate;
           });
           console.log(featuredmovie);
@@ -35,12 +35,9 @@ export default function Home() {
     })();
   }, []);
 
-
-
-
   return (
     <>
-      <About  />
+      <About />
       <div className='text-5xl text-center mt-2 italic'>
         Featured Movies🌟...
       </div>

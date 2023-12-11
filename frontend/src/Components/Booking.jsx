@@ -5,17 +5,17 @@ export default function Booking(props) {
   const [seatNumber, setnumber] = useState(0);
   const currentDate = new Date().toISOString().slice(0, 16);
   const [showdate, setdate] = useState(currentDate);
-    const [time, settime] = useState(0);
-const [confirmed,setconfirmed]=useState(true)
-    const [error, seterror] = useState(false);
-    const apirequest = async () => {
-      console.log("submission called")
-        const data = { seatNumber: seatNumber, showtime: showdate };
-        console.log(data);
-        console.log(props.data);
-        const id = props.data;
+  const [time, settime] = useState(0);
+  const [confirmed, setconfirmed] = useState(true);
+  const [error, seterror] = useState(false);
+  const apirequest = async () => {
+    console.log("submission called");
+    const data = { seatNumber: seatNumber, showtime: showdate };
+    console.log(data);
+    console.log(props.data);
+    const id = props.data;
     const response = await fetch(
-      `http://localhost:5000/api/v1/movie/booking/${props.data}`,
+      `https://amgain-movie-threature.onrender.com/api/v1/movie/booking/${props.data}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -23,14 +23,12 @@ const [confirmed,setconfirmed]=useState(true)
         body: JSON.stringify(data),
       }
     );
-        const data1 = await response.json();
-        if (data1.success === true)
-        {
-            setconfirmed(false)
-        }
-        else {
-            seterror(data1.message)
-        }
+    const data1 = await response.json();
+    if (data1.success === true) {
+      setconfirmed(false);
+    } else {
+      seterror(data1.message);
+    }
     console.log(data1);
   };
   const changeseat = (e) => {
@@ -92,11 +90,11 @@ const [confirmed,setconfirmed]=useState(true)
         </div>
       </div>
       <div className='bg-blue-300 p-3 rounded-md shadow-md flex md:flex-row justify-center'>
-        <button className='bg-blue-300 p-3 w-full'  onClick={apirequest}>
-          {confirmed? 'Confirm It':'Ticket Confirmed!'}
+        <button className='bg-blue-300 p-3 w-full' onClick={apirequest}>
+          {confirmed ? "Confirm It" : "Ticket Confirmed!"}
         </button>
-          </div>
-          {error ? (<div> { error}</div>):(<div></div>)}
+      </div>
+      {error ? <div> {error}</div> : <div></div>}
     </div>
   );
 }

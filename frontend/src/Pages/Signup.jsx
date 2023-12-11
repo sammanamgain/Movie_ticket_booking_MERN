@@ -15,12 +15,15 @@ export default function Login() {
       password: form.password,
     };
     //console.log(formdata);
-    const response = await fetch("http://localhost:5000/api/v1/user/sign_up", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(formdata),
-    });
+    const response = await fetch(
+      "https://amgain-movie-threature.onrender.com/api/v1/user/sign_up",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(formdata),
+      }
+    );
     const data = await response.json();
     if (data.success === true) {
       dispatch(signInsuccess(data.user._id));

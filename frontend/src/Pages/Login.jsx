@@ -1,28 +1,33 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signInsuccess,setUser,setEmail } from "../redux/user/userSlice";
+import { signInsuccess, setUser, setEmail } from "../redux/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [form, setform] = useState({email:'',password:''});
+  const [form, setform] = useState({ email: "", password: "" });
   const handlesubmit = async (e) => {
     e.preventDefault();
     console.log("submission called");
     const formdata = { email: form.email, password: form.password };
     //console.log(formdata);
-    const response = await fetch("http://localhost:5000/api/v1/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(formdata),
-    });
+    //use http://localhost:5000 if you are using on localhost
+
+    const response = await fetch(
+      "https://amgain-movie-threature.onrender.com/api/v1/user/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(formdata),
+      }
+    );
     const data = await response.json();
     if (data.success === true) {
-      dispatch(signInsuccess(data.user._id))
-      dispatch(setUser(data.user.username))
-      dispatch(setEmail(data.user.email))
+      dispatch(signInsuccess(data.user._id));
+      dispatch(setUser(data.user.username));
+      dispatch(setEmail(data.user.email));
       navigate("/home");
     }
   };
@@ -113,7 +118,10 @@ export default function Login() {
         <p className='mt-8 text-xs font-light text-center text-gray-700'>
           {" "}
           Don't have an account?{" "}
-          <a href='/sign-up' className='font-medium text-purple-600 hover:underline'>
+          <a
+            href='/sign-up'
+            className='font-medium text-purple-600 hover:underline'
+          >
             Sign up
           </a>
         </p>
