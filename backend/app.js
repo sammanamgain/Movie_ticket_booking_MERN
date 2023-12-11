@@ -6,7 +6,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://movie-react-eq03.onrender.com",
+    headers: ["Content-Type"],
+    credentials: true,
   })
 );
 const userrouter = require("./router/userRoutes.js");
