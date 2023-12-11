@@ -7,6 +7,7 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 204,
 };
+const app = express();
 app.use(function (req, res, next) {
   // res.header("Access-Control-Allow-Origin", "*");
   const allowedOrigins = [
@@ -29,8 +30,8 @@ app.use(function (req, res, next) {
 
 
 
-const app = express();
-app.use(cors());
+
+//app.use(cors());
 const userrouter = require("./router/userRoutes.js");
 const movierouter = require("./router/movieroutes.js");
 const customError = require("./middleware/customError.js");
