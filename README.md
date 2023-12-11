@@ -120,5 +120,11 @@ Javascript, HTML, CSS,React,React-Router-Dom,React-Redux-toolkit,Node.js,Express
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/e27394d4-ddfc-48ba-a1b5-ed9ef4b75bf3)
+![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/04eb20ba-7374-454e-9946-9fc3802de67b)
+![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/67e19563-0cc6-4691-aab8-1ecb44334191)
+![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/73c2e908-4d26-402d-9051-bbbef00dca4a)
+![image](https://github.com/sammanamgain/Movie_ticket_booking_MERN/assets/78356846/a272910b-4cfe-433b-988a-2470aa5d7da9)
+
+
 
