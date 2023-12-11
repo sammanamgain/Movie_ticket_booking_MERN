@@ -30,7 +30,7 @@ The project is simple movie ticket booking site. Here only authorized user can s
 #### LogOut --get request
 
 ```http
-  localhost:5000/api/v1/user/login
+  localhost:5000/api/v1/user/logout
 ```
 
 | Parameter | Type     | Description                       |
