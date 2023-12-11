@@ -7,11 +7,30 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 204,
 };
+app.use(function (req, res, next) {
+  // res.header("Access-Control-Allow-Origin", "*");
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "http://gamebrag.onrender.com",
+    "https://gamebrag.onrender.com",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+  next();
+});
 
 
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors());
 const userrouter = require("./router/userRoutes.js");
 const movierouter = require("./router/movieroutes.js");
 const customError = require("./middleware/customError.js");
